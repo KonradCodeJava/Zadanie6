@@ -20,6 +20,9 @@ class Main {
         while (true) {
             try {
                 int ex = menu();
+                if (ex != 0 && ex != 1 && ex != 2 && ex != 3) {
+                    throw new WrongSwitch();
+                }
                 switch (ex) {
                     case 1:
                         exercise1();
@@ -41,8 +44,8 @@ class Main {
                 System.out.println("Błędny wiek studenta!");
             } catch (WrongDate e) {
                 System.out.println("Błędna data urodzenia ");
-           // } catch (WrongSwitch e) {
-            //    System.out.println("Błędny znak ");
+            } catch (WrongSwitch e) {
+                System.out.println("Błędny znak ");
             }
         }
 
@@ -68,7 +71,7 @@ class Main {
     }
 
     public static int ReadAge() throws WrongAge {
-        
+
         System.out.println("Podaj wiek: ");
         int age = scan.nextInt();
         if (age > 100 || age < 0)
@@ -102,7 +105,6 @@ class Main {
 
     public static void exercise3() throws IOException {
 
-        
         var name = scan.nextLine();
         var wanted = (new Service()).findStudentByName(name);
         if (wanted == null)
